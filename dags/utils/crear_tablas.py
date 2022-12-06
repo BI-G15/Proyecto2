@@ -1,6 +1,6 @@
 def crear_tablas_violencia():
     return """
-    
+
         CREATE TABLE IF NOT EXISTS mineria_violencia(
             idMin VARCHAR(100) PRIMARY KEY,
             recurso VARCHAR(100),
@@ -22,12 +22,14 @@ def crear_tablas_violencia():
             idVio VARCHAR(100) PRIMARY KEY,
             cSecuestros DECIMAL,
 			cDesplazadas DECIMAL,
-			cDesplaExp DECIMAL
+			cDesplaExp DECIMAL,
+            cHomicidios DECIMAL
         );
 
         CREATE TABLE IF NOT EXISTS municipio_violencia(
             id VARCHAR(100) PRIMARY KEY,
-            municipio VARCHAR(30),
+            nombre VARCHAR(100),
+            departamento VARCHAR(100),
             anio INT,
 			idMin VARCHAR(100) REFERENCES mineria_violencia (idMin),
 			idEdu VARCHAR(100) REFERENCES educacion_violencia (idEdu),
@@ -38,13 +40,6 @@ def crear_tablas_violencia():
 
 def crear_tablas_mujeres():
     return """
-        DROP TABLE municipio_mujeres;
-        DROP TABLE mineria_mujeres;
-        DROP TABLE educacion_mujeres;
-        DROP TABLE demografia_mujeres;
-        DROP TABLE violencia_mujeres;
-
-
     
         CREATE TABLE IF NOT EXISTS mineria_mujeres(
             idMin VARCHAR(100) PRIMARY KEY,
